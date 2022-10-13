@@ -1,0 +1,264 @@
+{% extends 'index.html' %}
+{% load static %}
+{% load product %}
+
+{% block title %}
+<title>Online Bazar | Single Product Page</title>
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid mb-2 mt-3">
+    <div class="row">
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+            <div id="carouselExampleIndicators" class="carousel slide" style="height: 650px;" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+                        class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                        aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                        aria-label="Slide 3"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
+                        aria-label="Slide 4"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        {% if Product.pic1 %}
+                        <img src="{{Product.pic1.url}}" class="d-block w-100" style="height: 650px;" alt="...">
+                        {% else %}
+                        <td><img src="{% static 'images/noimagep.png' %}" class="d-block w-100" style="height: 650px;"
+                                alt="...">
+                        </td>
+                        {% endif %}
+                    </div>
+                    <div class="carousel-item">
+                        {% if Product.pic2 %}
+                        <img src="{{Product.pic2.url}}" class="d-block w-100" style="height: 650px;" alt="...">
+                        {% else %}
+                        <td><img src="{% static 'images/noimagep.png' %}" class="d-block w-100" style="height: 650px;"
+                                alt="...">
+                        </td>
+                        {% endif %}
+                    </div>
+                    <div class="carousel-item">
+                        {% if Product.pic3 %}
+                        <img src="{{Product.pic3.url}}" class="d-block w-100" style="height: 650px;" alt="...">
+                        {% else %}
+                        <td><img src="{% static 'images/noimagep.png' %}" class="d-block w-100" style="height: 650px;"
+                                alt="...">
+                        </td>
+                        {% endif %}
+                    </div>
+                    <div class="carousel-item">
+                        {% if Product.pic4 %}
+                        <img src="{{Product.pic4.url}}" class="d-block w-100" style="height: 650px;" alt="...">
+                        {% else %}
+                        <td><img src="{% static 'images/noimagep.png' %}" class="d-block w-100" style="height: 650px;"
+                                alt="...">
+                        </td>
+                        {% endif %}
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+            <div class="mt-2 d-flex justify-content-bettween">
+                <div class="row">
+                    {% if Product.pic1 %}
+                    <td><img src="{{Product.pic1.url}}" class="mb-3 w-100" style="height: 150px;" alt="..."></td>
+                    {% else %}
+                    <td><img src="{% static 'images/noimagep.png' %}" class="mb-3 w-100" style="height: 150px;" alt="...">
+                    </td>
+                    {% endif %}
+                </div>
+                <div class="row">
+                    {% if Product.pic2 %}
+                    <td><img src="{{Product.pic2.url}}" class="mb-3 w-100" style="height: 150px;" alt="..."></td>
+                    {% else %}
+                    <td><img src="{% static 'images/noimagep.png' %}" class="mb-3 w-100" style="height: 150px;" alt="...">
+                    </td>
+                    {% endif %}
+                </div>
+                <div class="row">
+                    {% if Product.pic3 %}
+                    <td><img src="{{Product.pic3.url}}" class="mb-3 w-100" style="height: 150px;" alt="..."></td>
+                    {% else %}
+                    <td><img src="{% static 'images/noimagep.png' %}" class="mb-3 w-100" style="height: 150px;" alt="...">
+                    </td>
+                    {% endif %}
+                </div>
+                <div class="row">
+                    {% if Product.pic4 %}
+                    <td><img src="{{Product.pic4.url}}" class="mb-3 w-100" style="height: 150px;" alt="..."></td>
+                    {% else %}
+                    <td><img src="{% static 'images/noimagep.png' %}" class="mb-3 w-100" style="height: 150px;" alt="...">
+                    </td>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+            <h3 class="background text-light text-center p-2 mt-1">{{Product.name}}</h3>
+            <table class="table table-light table-striped table-hover">
+                <tr>
+                    <th>Main-Category</th>
+                    <td>{{Product.maincategory}}</td>
+                </tr>
+                <tr>
+                    <th>Sub-Category</th>
+                    <td>{{Product.subcategory}}</td>
+                </tr>
+                <tr>
+                    <th>Brand</th>
+                    <td>{{Product.brand}}</td>
+                </tr>
+                <tr>
+                    <th>Stock</th>
+                    <td>{{Product.stock}}</td>
+                </tr>
+                <tr>
+                    <th>Baseprice</th>
+                    <td>&#8377; {{Product.baseprice}}</td>
+                </tr>
+                <tr>
+                    <th>Discount</th>
+                    <td>{{Product.discount}} %</td>
+                </tr>
+                <th>FinalPrice</th>
+                <td>&#8377; {{Product.finalprice}}</td>
+                <form action="/addtocart/" method="POST">
+                    {% csrf_token %}
+                    <tr>
+                        <th>Colour :-</th>
+                        <td>
+                            <select name="color" class="form-control">
+                                {% for i in Color %}
+                                <option value="{{i}}">{{i}}</option>
+                                {% endfor %}
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Size :-</th>
+                        <td>
+                            <select name="size" class="form-control">
+                                {% for i in Size %}
+                                <option value="{{i}}">{{i}}</option>
+                                {% endfor %}
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Stock :-</th>
+                        <td>{{Product.stock}}</td>
+                    </tr>
+                    <tr>
+                        <th>Description :-</th>
+                        <td>{{Product.description}}</td>
+                    </tr>
+                    <tr>
+                        <input type="hidden" name="pid" value="{{Product.id}}">
+                        {% if request|stock:Product.stock %}
+                        <th colspan="2"><button type="submit" class="btn background text-light w-100"
+                                style="margin-right: 10px;">Add to Cart</button>
+                            {% else %}
+                        <th colspan="2"><button type="submit" disabled class="btn background text-light w-100"
+                                style="margin-right: 10px;">Add to Cart</button>
+                            {% endif %}
+                    </tr>
+                </form>
+                <tr>
+                    <th colspan="2"><a href="/wishlist/{{Product.id}}/" class="btn background text-light w-100">Add to
+                            Wishlist</a></th>
+                </tr>
+
+            </table>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
+<table class=" table table-light  table-hover table-striped">
+    <tr>
+        <th>Main-Category</th>
+        <td>{{Product.maincategory}}</td>
+    </tr>
+    <tr>
+        <th>Sub-Category</th>
+        <td>{{Product.subcategory}}</td>
+    </tr>
+    <tr>
+        <th>Brand</th>
+        <td>{{Product.brand}}</td>
+    </tr>
+    <tr>
+        <th>Stock</th>
+        <td>{{Product.stock}}</td>
+    </tr>
+    <tr>
+        <th>Baseprice</th>
+        <td>&#8377; {{Product.baseprice}}</td>
+    </tr>
+    <tr>
+        <th>Discount</th>
+        <td>{{Product.discount}} %</td>
+    </tr>
+    <th>FinalPrice</th>
+    <td>&#8377; {{Product.finalprice}}</td>
+    <form action="/addtocart/" method="POST">
+        {% csrf_token %}
+        <tr>
+            <th>Colour :-</th>
+            <td>
+                <select name="color" class="form-control">
+                    {% for i in Color %}
+                    <option value="{{i}}">{{i}}</option>
+                    {% endfor %}
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <th>Size :-</th>
+            <td>
+                <select name="size" class="form-control">
+                    {% for i in Size %}
+                    <option value="{{i}}">{{i}}</option>
+                    {% endfor %}
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <th>Stock :-</th>
+            <td>{{Product.stock}}</td>
+        </tr>
+        <tr>
+            <th>Description :-</th>
+            <td>{{Product.description}}</td>
+        </tr>
+        <tr>
+            <input type="hidden" name="pid" value="{{Product.id}}">
+            {% if request|stock:Product.stock %}
+            <th colspan="2"><button type="submit" class="btn background text-light w-100"
+                    style="margin-right: 10px;">Add to Cart</button>
+                {% else %}
+            <th colspan="2"><button type="submit" disabled class="btn background text-light w-100"
+                    style="margin-right: 10px;">Add to Cart</button>
+                {% endif %}
+        </tr>
+    </form>
+    <tr>
+        <th colspan="2"><a href="/wishlist/{{Product.id}}/" class="btn background text-light w-100">Add to
+                Wishlist</a></th>
+    </tr>
+
+</table>

@@ -1,0 +1,61 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %}
+<title>Online Bazar | Contact Page</title>
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid mb-2 mt-3">
+    <div class="row">
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 mt-1">
+            <div class="background text-light text-center p-3 mb-3">
+                ankitkumarprajapati718@gmail.com
+            </div>
+            <div class="background text-light text-center p-3 mb-3">
+                +91 886 987 1298
+            </div>
+            <div class="background text-light text-center p-3 mb-3">
+                 Vill Gohawar Jait, Post-Gohawar, Noorpur, Bijnor, UP
+            </div>
+            <div class="mapouter"><div class="gmap_canvas"><iframe width="650" height="500" id="gmap_canvas" frameborder="0" scrolling="no" marginheight="100px" marginwidth="0" src="https://maps.google.com/maps?width=600&amp;
+                height=400&amp;hl=en&amp;q=gohawar jait&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
+            </iframe><a href="https://mcpenation.com/"></a></div><style>
+           .mapouter{position:relative;text-align:right;height:500px;width:600px;}</style></div>
+            
+        </div>
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+            {% for i in messages %}
+            <div class="alert alert-success" role="alert">
+                {{i}}
+              </div>
+            {% endfor %}
+            <form action="" method="POST">
+                {% csrf_token %}
+                <h3 class="background text-light text-center p-2 mt-1">Contact Us</h3>
+                <div class="mb-2">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" name="name" placeholder="Enter your Name" required>
+                </div>
+                <div class="mb-2">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" name="email" placeholder="Enter your email" required>
+                </div>
+                <div class="mb-2">
+                    <label for="phone" class="form-label">Phone Number</label>
+                    <input type="text" class="form-control" name="phone" placeholder="Enter your phone number" required>
+                </div>
+                <div class="mb-2">
+                    <label for="subject" class="form-label">Subject</label>
+                    <input type="text" class="form-control" name="subject" placeholder="Enter your subject" required>
+                </div>
+                <div class="mb-2">
+                    <label for="Message" class="form-label">Message</label>
+                    <textarea name="message" class="form-control" rows="10"></textarea>
+                </div>
+                <button type="submit" class="btn background p-1  mt-3 text-light w-100">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

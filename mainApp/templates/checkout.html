@@ -1,0 +1,128 @@
+{% extends 'index.html' %}
+{% load static %}
+{% load cart %}
+
+{% block title %}
+<title>Online Bazar | Checkout Page</title>
+{% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="col-md-6 col-sm-12 col-12 mt-3">
+        <h3 class="background text-light text-center p-2">Billing Details</h3>
+        <table class="table table-light table-striped table-hover">
+            <tr>
+                <th>Name :-</th>
+                <td>{{User.name}}</td>
+            </tr>
+            <tr>
+                <th>Username :-</th>
+                <td>{{User.username}}</td>
+            </tr>
+            <tr>
+                <th>Email :-</th>
+                <td>{{User.email}}</td>
+            </tr>
+            <tr>
+                <th>Phone :-</th>
+                <td>{{User.phone}}</td>
+            </tr>
+            <tr>
+                <th>House Number :-</th>
+                <td>{{User.addressline1}}</td>
+            </tr>
+            <tr>
+                <th>Street Number :-</th>
+                <td>{{User.addressline2}}</td>
+            </tr>
+            <tr>
+                <th>Locality :-</th>
+                <td>{{User.addressline3}}</td>
+            </tr>
+            <tr>
+                <th>Pin Code :-</th>
+                <td>{{User.pin}}</td>
+            </tr>
+            <tr>
+                <th>City :-</th>
+                <td>{{User.city}}</td>
+            </tr>
+            <tr>
+                <th>State :-</th>
+                <td>{{User.state}}</td>
+            </tr>
+            <tr>
+                <th colspan="2"><a href="/updateprofile/" class="btn background text-light w-100">Update Profile</a>
+                </th>
+            </tr>
+        </table>
+    </div>
+    <div class="col-md-6 col-sm-12 col-12 mt-3">
+        <h4 class="background text-light p-2 text-center">Billing Section</h4>
+        <div class="table-responsive">
+            <table class="table table-hover table-striped table-light">
+                <tr>
+                    <th></th>
+                    <th>Product Name</th>
+                    <th>Colour</th>
+                    <th>Size</th>
+                    <th>Price</th>
+                    <th>Qty</th>
+                    <th>Total</th>
+                </tr>
+                {% for i in Cart %}
+                <tr>
+                    {% if request|cartimage:i %}
+                    <td><img src="{{request|cartimage:i}}" height="90px" width="90px"></td>
+                    {% else %}
+                    <td><img src="{% static 'images/noimagep.png' %}" height="90px" width="90px"></td>
+                    {% endif %}
+                    <td>{{request|cartname:i}}</td>
+                    <td>{{request|cartColor:i}}</td>
+                    <td>{{request|cartSize:i}}</td>
+                    <td>&#8377;{{request|cartprice:i}}</td>
+                    <td>{{request|cartqty:i}}</td>
+                    <td>&#8377;{{request|cartTotal:i}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="row">
+            <table class="table table-hover table-striped table-light">
+                <tr>
+                    <th>Total</th>
+                    <td>&#8377;{{Total}}</td>
+                </tr>
+                <tr>
+                    <th>Shipping</th>
+                    <td>&#8377;{{Shipping}}</td>
+                </tr>
+                <tr>
+                    <th>Final</th>
+                    <td>&#8377;{{Final}}</td>
+                </tr>
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <tr>
+                        <th>Mode of Payment</th>
+                        <td><select class="form-control" name="mode">
+                            <option  value="COD">COD</option>
+                            <option  value="Net Banking">Net Banking/Card/UPI</option>
+                        </select></td>
+                    </tr>
+                    <tr>
+                        <th colspan="2"><button type="submit" class="btn w-100 background text-light">Place order</button>
+                        </th>
+                    </tr>
+                </form>
+            </table>
+        </div>
+        <script>
+            function fun(num) {
+                if (confirm("Are you sure! You Want to Delete that Item"))
+                    window.open(`/deletecart/${num}/`)
+            }
+        </script>
+    </div>
+</div>
+{% endblock %}
